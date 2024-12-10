@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/mainPage">
+    <fragment
+        android:id="@+id/calenderPage"
+        android:name="com.example.chipopoproject.fragments.calenderPage"
+        android:label="fragment_calender_page"
+        tools:layout="@layout/fragment_calender_page" />
+    <fragment
+        android:id="@+id/registerPage"
+        android:name="com.example.chipopoproject.fragments.registerPage"
+        android:label="fragment_register_page"
+        tools:layout="@layout/fragment_register_page" />
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="com.example.chipopoproject.fragments.mainPage"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPage_to_registerPage"
+            app:destination="@id/registerPage" />
+        <action
+            android:id="@+id/action_mainPage_to_calenderPage"
+            app:destination="@id/calenderPage" />
+    </fragment>
+</navigation>
