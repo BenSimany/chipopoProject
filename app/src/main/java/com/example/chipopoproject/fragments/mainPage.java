@@ -2,6 +2,7 @@ package com.example.chipopoproject.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -9,8 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.chipopoproject.R;
+import com.example.chipopoproject.activities.MainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +35,8 @@ public class mainPage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    //private FirebaseAuth mAuth;
+
 
     public mainPage() {
         // Required empty public constructor
@@ -59,12 +69,12 @@ public class mainPage extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_page, container, false);
-
         Button button1 = (Button) view.findViewById(R.id.buttonRegister);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +86,10 @@ public class mainPage extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_mainPage_to_calenderPage);
+                //Navigation.findNavController(view).navigate(R.id.action_mainPage_to_calenderPage);
+                //the line up is directing to calender page, not sure why effi commented it out
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.login();
             }
         });
 

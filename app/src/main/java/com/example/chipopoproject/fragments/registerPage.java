@@ -3,12 +3,15 @@ package com.example.chipopoproject.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.chipopoproject.R;
+import com.example.chipopoproject.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +64,18 @@ public class registerPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_register_page, container, false);
+        //////////////tryyyyyyyyyy//////////////////////
+
+
+        Button button3 = (Button)view.findViewById(R.id.buttonReg);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.reg();            }
+        });
+        return view;
     }
+
 }
