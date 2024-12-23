@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frag_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.registerPage">
-
-    <LinearLayout
+    tools:context=".fragments.loginPage" >
+    
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonBack"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="go back" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:src="@drawable/doorpic" />
 
     <EditText
-        android:id="@+id/textEmailAddress"
+        android:id="@+id/TextEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -30,34 +25,23 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/TextPassword"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:ems="10"
         android:hint="enter password"
         android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/textPassword2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="enter password"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/textPhone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="enter phone"
-        android:inputType="phone" />
 
     <Button
-        android:id="@+id/buttonReg"
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
