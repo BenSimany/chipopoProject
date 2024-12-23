@@ -6,24 +6,44 @@
     app:startDestination="@id/mainPage">
     <fragment
         android:id="@+id/calenderPage"
-        android:name="com.example.chipopoproject.fragments.calenderPage"
+        android:name="com.example.chipopoproject.fragments.mainPage"
         android:label="fragment_calender_page"
-        tools:layout="@layout/fragment_calender_page" />
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_calenderPage_to_loginPage"
+            app:destination="@id/mainPage" />
+        <action
+            android:id="@+id/action_calenderPage_to_addProductPage"
+            app:destination="@id/addProductPage" />
+    </fragment>
     <fragment
         android:id="@+id/registerPage"
         android:name="com.example.chipopoproject.fragments.registerPage"
         android:label="fragment_register_page"
-        tools:layout="@layout/fragment_register_page" />
+        tools:layout="@layout/fragment_register_page" >
+        <action
+            android:id="@+id/action_registerPage_to_loginPage"
+            app:destination="@id/mainPage" />
+    </fragment>
     <fragment
         android:id="@+id/mainPage"
-        android:name="com.example.chipopoproject.fragments.mainPage"
+        android:name="com.example.chipopoproject.fragments.loginPage"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" >
+        tools:layout="@layout/fragment_login_page" >
         <action
             android:id="@+id/action_mainPage_to_registerPage"
             app:destination="@id/registerPage" />
         <action
             android:id="@+id/action_mainPage_to_calenderPage"
+            app:destination="@id/calenderPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductPage"
+        android:name="com.example.chipopoproject.fragments.addProductPage"
+        android:label="fragment_add_product_page"
+        tools:layout="@layout/fragment_add_product_page" >
+        <action
+            android:id="@+id/action_addPage_to_calenderPage"
             app:destination="@id/calenderPage" />
     </fragment>
 </navigation>

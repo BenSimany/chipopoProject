@@ -9,15 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.chipopoproject.R;
+import com.example.chipopoproject.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link mainPage#newInstance} factory method to
+ * Use the {@link loginPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class mainPage extends Fragment {
+public class loginPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,8 +29,10 @@ public class mainPage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    //private FirebaseAuth mAuth;
 
-    public mainPage() {
+
+    public loginPage() {
         // Required empty public constructor
     }
 
@@ -38,11 +42,11 @@ public class mainPage extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment calenderPage.
+     * @return A new instance of fragment mainPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static mainPage newInstance(String param1, String param2) {
-        mainPage fragment = new mainPage();
+    public static loginPage newInstance(String param1, String param2) {
+        loginPage fragment = new loginPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,36 +63,33 @@ public class mainPage extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main_page, container, false);
-        // Inflate the layout for this fragment
-        Button button6 = (Button) view.findViewById(R.id.buttonLogout);
-        button6.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_login_page, container, false);
+        Button button1 = (Button) view.findViewById(R.id.buttonRegister);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_calenderPage_to_loginPage);
+                Navigation.findNavController(view).navigate(R.id.action_mainPage_to_registerPage);
             }
         });
-        Button button7 = (Button) view.findViewById(R.id.buttonAdd);
-        button7.setOnClickListener(new View.OnClickListener() {
+        Button button2 = (Button) view.findViewById(R.id.buttonLogin);
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_calenderPage_to_addProductPage);
+                //Navigation.findNavController(view).navigate(R.id.action_mainPage_to_calenderPage);
+                //the line up is directing to calender page, not sure why effi commented it out
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.login();
+                //mainActivity.getStudent("0544746355");
+
             }
         });
+
+
         return view;
     }
 }
-
-//    private void initializeRecyclerView(View view) {
-//        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        ProductAdapter adapter = new ProductAdapter(productList);
-//        recyclerView.setAdapter(adapter);
-//    }
-
-
-
