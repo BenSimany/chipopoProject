@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -65,6 +67,8 @@ public class addProductPage extends Fragment {
                 }
             }
         });
+        ImageButton addIcon = view.findViewById(R.id.buttonBackToMain);
+        addIcon.setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_addPage_to_mainPage));
 
         return view;
     }
