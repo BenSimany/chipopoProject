@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.loginPage" >
-    
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:backgroundTint="@color/black"
         android:text="Login" />
 
     <Button
@@ -45,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:backgroundTint="@color/black"
         android:text="Register" />
 
 </LinearLayout>

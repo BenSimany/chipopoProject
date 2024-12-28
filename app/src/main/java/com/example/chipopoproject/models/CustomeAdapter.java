@@ -1,4 +1,5 @@
 package com.example.chipopoproject.models;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chipopoproject.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MyViewHolder> {
 
-    private ArrayList<DataModel> dataSet;
+    private ArrayList<Product> productList;
 
-    public CustomeAdapter(ArrayList<DataModel> dataSet) {
-        this.dataSet = dataSet;
+    public CustomeAdapter(ArrayList<Product> productList) {
+        this.productList = productList;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -36,22 +38,24 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.MyViewHo
     @Override
     public CustomeAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
-
-        return myViewHolder;
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomeAdapter.MyViewHolder holder, int position) {
-
-        holder.textViewName.setText(dataSet.get(position).getName());
-        holder.textViewPrice.setText(dataSet.get(position).getPrice());
-        holder.textViewQuantity.setText(dataSet.get(position).getQuantity());
-        //holder.textViewQuantity.setImageResource(dataSet.get(position).getImage());
+        Product product = productList.get(position);
+        holder.textViewName.setText(product.getName());
+        holder.textViewPrice.setText(String.valueOf(product.getPrice()));
+        holder.textViewQuantity.setText(String.valueOf(product.getQuantity()));
     }
 
     @Override
     public int getItemCount() {
-        return dataSet.size();
+        return productList.size();
+    }
+
+    public void addProduct(Product product) {
+        productList.add(product);
+        notifyItemInserted(productList.size() - 1);
     }
 }

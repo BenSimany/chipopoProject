@@ -1,21 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
     app:startDestination="@id/mainPage">
+
     <fragment
         android:id="@+id/calenderPage"
         android:name="com.example.chipopoproject.fragments.mainPage"
         android:label="fragment_calender_page"
         tools:layout="@layout/fragment_main_page" >
         <action
-            android:id="@+id/action_calenderPage_to_loginPage"
+            android:id="@+id/action_mainPage_to_loginPage"
             app:destination="@id/mainPage" />
         <action
-            android:id="@+id/action_calenderPage_to_addProductPage"
+            android:id="@+id/action_mainPage_to_addProductPage"
             app:destination="@id/addProductPage" />
     </fragment>
+
     <fragment
         android:id="@+id/registerPage"
         android:name="com.example.chipopoproject.fragments.registerPage"
@@ -25,6 +26,7 @@
             android:id="@+id/action_registerPage_to_loginPage"
             app:destination="@id/mainPage" />
     </fragment>
+
     <fragment
         android:id="@+id/mainPage"
         android:name="com.example.chipopoproject.fragments.loginPage"
@@ -37,13 +39,15 @@
             android:id="@+id/action_mainPage_to_calenderPage"
             app:destination="@id/calenderPage" />
     </fragment>
+
     <fragment
         android:id="@+id/addProductPage"
         android:name="com.example.chipopoproject.fragments.addProductPage"
         android:label="fragment_add_product_page"
         tools:layout="@layout/fragment_add_product_page" >
         <action
-            android:id="@+id/action_addPage_to_calenderPage"
+            android:id="@+id/action_addPage_to_mainPage"
             app:destination="@id/calenderPage" />
     </fragment>
+
 </navigation>

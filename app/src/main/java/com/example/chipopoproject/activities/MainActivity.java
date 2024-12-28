@@ -13,7 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.Navigation;
 
 import com.example.chipopoproject.R;
-import com.example.chipopoproject.models.Student;
+import com.example.chipopoproject.models.Product;
+import com.example.chipopoproject.models.student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -82,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void addData ( ) {
-
+        String name = ((EditText)findViewById(R.id.nameText)).getText().toString();
         String phone = ((EditText)findViewById(R.id.textPhone)).getText().toString();
         String email = ((EditText)findViewById(R.id.textEmailAddress)).getText().toString();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users").child(phone);
 
-        Student s = new Student(phone, email);
+        student s = new student(name,email,phone);
         myRef.setValue(s);
     }
 }

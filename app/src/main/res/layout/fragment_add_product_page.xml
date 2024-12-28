@@ -1,46 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragments.addProductPage">
+    android:padding="16dp"
+    tools:context="com.example.chipopoproject.fragments.addProductPage">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <Button
+    <!-- כפתור לחזרה לעמוד הראשי -->
+    <ImageButton
         android:id="@+id/buttonBackToMain"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="go back" />
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@null"
+        android:src="@drawable/go_back"
+        android:contentDescription="Go Back"
+        android:layout_margin="8dp" />
 
-    <TextView
-        android:id="@+id/addName"
+    <!-- תוכן הדף -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="enter product's name" />
+        android:layout_below="@id/buttonBackToMain"
+        android:layout_marginTop="8dp">
 
-    <TextView
-        android:id="@+id/addQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="enter product's quantity" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/addPrice"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="enter product's price " />
+            <!-- שדה להזנת שם המוצר -->
+            <EditText
+                android:id="@+id/etProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter product's name"
+                android:inputType="text"
+                tools:ignore="TouchTargetSizeCheck" />
 
-    <Button
-        android:id="@+id/buttonAddProduct"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Add Product" />
+            <!-- שדה להזנת כמות המוצר -->
+            <EditText
+                android:id="@+id/etProductQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter product's quantity"
+                android:inputType="number"
+                tools:ignore="TouchTargetSizeCheck" />
 
-</LinearLayout>
+            <!-- שדה להזנת מחיר המוצר -->
+            <EditText
+                android:id="@+id/etProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter product's price"
+                android:inputType="numberDecimal"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <!-- כפתור להוספת המוצר -->
+            <Button
+                android:id="@+id/buttonAddProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/black"
+                android:textColor="@android:color/white"
+                android:text="Add Product" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
