@@ -51,7 +51,6 @@ public class loginPage extends Fragment {
             Navigation.findNavController(view).navigate(R.id.action_mainPage_to_registerPage);
         });
 
-        // מאזין ללחיצה על כפתור התחברות
         buttonLogin.setOnClickListener(v -> {
             String email = textEmail.getText().toString().trim();
             String password = textPassword.getText().toString().trim();
@@ -61,7 +60,6 @@ public class loginPage extends Fragment {
                 return;
             }
 
-            // התחברות עם Firebase Authentication
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -77,10 +75,24 @@ public class loginPage extends Fragment {
                                 Navigation.findNavController(view).navigate(R.id.action_mainPage_to_calenderPage);
                             }
                         } else {
-                            Toast.makeText(getContext(), "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            String errorMessage = "Login failed";
+                            if (task.getException() != null) {
+                                String errorCode = task.getException().getMessage();
+                                if (errorCode.contains("password is invalid")) {
+                                    errorMessage = "Wrong password";
+                                } else if (errorCode.contains("no user record")) {
+                                    errorMessage = "User not found";
+                                } else if (errorCode.contains("badly formatted")) {
+                                    errorMessage = "Invalid email format";
+                                } else if (errorCode.contains("network error")) {
+                                    errorMessage = "Network error, check your connection";
+                                }
+                            }
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     });
         });
+
 
         return view;
     }

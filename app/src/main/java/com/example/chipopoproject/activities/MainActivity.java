@@ -41,47 +41,58 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void reg(){
-        String email = ((EditText)findViewById(R.id.textEmailAddress)).getText().toString();
-        String password = ((EditText)findViewById(R.id.textPassword)).getText().toString();
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(MainActivity.this, "reg success", Toast.LENGTH_SHORT).show();
+//    public void reg(){
+//        String email = ((EditText)findViewById(R.id.textEmailAddress)).getText().toString();
+//        String password = ((EditText)findViewById(R.id.textPassword)).getText().toString();
+//        mAuth.createUserWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Toast.makeText(MainActivity.this, "reg success", Toast.LENGTH_SHORT).show();
+//
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Toast.makeText(MainActivity.this, "reg success", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }
+//                });
+//    }
+//    public void login() {
+//        String email = ((EditText)findViewById(R.id.TextEmailAddress)).getText().toString();
+//        String password = ((EditText)findViewById(R.id.TextPassword)).getText().toString();
+//
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // הצלחה
+//                            Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+//                            Navigation.findNavController(MainActivity.this, R.id.fragmentContainerView).navigate(R.id.action_mainPage_to_calenderPage);
+//                        } else {
+//                            // שגיאה - מציגים הודעה מתאימה
+//                            String errorMessage = "Login failed";
+//                            if (task.getException() != null) {
+//                                String errorCode = task.getException().getMessage();
+//                                if (errorCode.contains("password is invalid")) {
+//                                    errorMessage = "Wrong password";
+//                                } else if (errorCode.contains("no user record")) {
+//                                    errorMessage = "User not found";
+//                                } else if (errorCode.contains("badly formatted")) {
+//                                    errorMessage = "Invalid email format";
+//                                } else if (errorCode.contains("network error")) {
+//                                    errorMessage = "Network error, check your connection";
+//                                }
+//                            }
+//                            Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
 
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "reg success", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-    }
-    public void login() {
-        String email = ((EditText)findViewById(R.id.TextEmailAddress)).getText().toString();
-        String password = ((EditText)findViewById(R.id.TextPassword)).getText().toString();
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-
-                            Toast.makeText(MainActivity.this, "login success", Toast.LENGTH_SHORT).show();
-                            Navigation.findNavController(MainActivity.this, R.id.fragmentContainerView).navigate(R.id.action_mainPage_to_calenderPage);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "login failed", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-
-    }
     public void addData ( ) {
         String name = ((EditText)findViewById(R.id.nameText)).getText().toString();
         String phone = ((EditText)findViewById(R.id.textPhone)).getText().toString();

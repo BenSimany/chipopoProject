@@ -44,13 +44,21 @@ public class registerPage extends Fragment {
             String confirmPassword = textConfirmPassword.getText().toString().trim();
             String phone = textPhone.getText().toString().trim();
 
+            // בדיקת שדות ריקים
             if (name.isEmpty() || email.isEmpty() || password.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // ולידציה למייל
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 Toast.makeText(getContext(), "Please enter a valid email", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // ולידציה לסיסמה
+            if (password.length() < 6) {
+                Toast.makeText(getContext(), "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -59,7 +67,12 @@ public class registerPage extends Fragment {
                 return;
             }
 
-            // יצירת משתמש ב-Firebase Authentication
+            // ולידציה לטלפון
+            if (phone.length() != 10 || !phone.matches("\\d+")) {
+                Toast.makeText(getContext(), "Please enter a valid 10-digit phone number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
@@ -70,12 +83,17 @@ public class registerPage extends Fragment {
 
                             Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
                             Navigation.findNavController(view).navigate(R.id.action_registerPage_to_loginPage);
-                        } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                            Toast.makeText(getContext(), "This email is already registered", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getContext(), "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            String errorMessage = "Registration failed";
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                errorMessage = "This email is already registered";
+                            } else if (task.getException() != null) {
+                                errorMessage = task.getException().getMessage();
+                            }
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     });
+
         });
 
         return view;

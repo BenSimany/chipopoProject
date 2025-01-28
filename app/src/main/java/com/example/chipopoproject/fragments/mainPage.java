@@ -3,6 +3,7 @@ package com.example.chipopoproject.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +49,15 @@ public class mainPage extends Fragment {
         adapter = new CustomeAdapter(productList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        if (recyclerView == null) {
+            Log.e("mainPage", "RecyclerView is null");
+        }
+
 
         // שליפת שם המשתמש המחובר
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            String email = currentUser.getEmail(); // קבלת האימייל של המשתמש המחובר
+            String email = currentUser.getEmail();
             DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
             // חיפוש המשתמש לפי אימייל
@@ -80,12 +85,12 @@ public class mainPage extends Fragment {
             nameText.setText("User's list");
         }
 
-        // שליפת מוצרים
+        // שליפת מוצרים של המשתמש המחובר
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         String phone = sharedPreferences.getString("phone", null);
         if (phone != null) {
             DatabaseReference userProductsRef = FirebaseDatabase.getInstance().getReference("users").child(phone).child("Products");
-            userProductsRef.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
+            userProductsRef.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     Product product = snapshot.getValue(Product.class);
